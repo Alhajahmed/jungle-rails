@@ -7,10 +7,10 @@
     <%= image_tag @product.image.url, class: 'main-img' %>
     <div>
       <h1><%= @product.name %></h1>
-      <p><%= @product.description %></p>
+      <p>Description: <%= @product.description %></p>
       <div class="quantity">
         <span><%= @product.quantity %> in stock at </span>
-        <span><%= @product.price %></span>
+        <span>Price: <%= formatted_currency(@product.price) %></span>
       </div>
       <div class="price">          
         <%= button_to add_item_cart_path(product_id: @product.id), class: 'btn' , method: :post do %>
@@ -19,5 +19,4 @@
       </div>
     </div>
   </article>
-
 </section>
