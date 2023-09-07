@@ -1,5 +1,5 @@
 class Admin::ProductsController < ApplicationController
-  http_basic_authenticate_with name: "Jungle", password: "book"
+  before_action :authenticate_admin
 
   def index
     @products = Product.order(id: :desc).all
@@ -38,4 +38,9 @@ class Admin::ProductsController < ApplicationController
     )
   end
 
+  def authenticate_admin
+    authenticate_or_request_with_http_basic do |username, password|
+      username == ENV['ADMIN_USERNAME'] && password == ENV['ADMIN_PASSWORD']
+    end
+  end
 end
