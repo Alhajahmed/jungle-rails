@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
 
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/destroy'
+  get 'users/new'
+  get 'users/create'
   get 'about/index'
+  post 'sessions/new'
+  post 'sessions/create'
   root to: 'products#index'
+
+  resources :users, only: [:new, :create]
+  resource :session, only: [:new, :create, :destroy]
   
   resources :about, only: [:index]
   

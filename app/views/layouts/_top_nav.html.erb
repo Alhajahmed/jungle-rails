@@ -66,6 +66,12 @@
       </ul>
     </div>
   </div>
+  <% if session[:user_id].nil? %>
+  <%= link_to "Register", new_user_path, class: 'btn btn-primary' %>
+  <%= link_to "Login", new_session_path, class: 'btn btn-success' %>
+<% else %>
+  <%= link_to "Logout", session_path, method: :delete, class: 'btn btn-danger' %>
+<% end %>
 </nav>
 <script>
 (function(){
